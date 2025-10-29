@@ -1,21 +1,80 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyCNDRpdr9jym_rDvwFEp4XMTx74wFHVrWQ",
-  authDomain: "merca-joja.firebaseapp.com",
-  projectId: "merca-joja",
-  storageBucket: "merca-joja.firebasestorage.app",
-  messagingSenderId: "784636335257",
-  appId: "1:784636335257:web:0c7bef4ecdcebbba801408",
-  measurementId: "G-3H54Q7XQY9"
-};
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
+//Importamos los modulos necesarios de firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+//Modulos de la base de datos: Cada uno de estos modulos nos permite realizar diferentes operaciones en la base de datos
+//Por ejemplo, "getDatabase" nos permite obtener una instancia de la base de datos, 
+// "ref" nos permite crear referencias a ubicaciones específicas en la base de datos,
+//"push" nos permite agregar nuevos datos a una lista, 
+// "onValue" nos permite escuchar cambios en los datos en tiempo real, y 
+// "set" nos permite escribir datos en una ubicación específica.
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
+
+
+//Importamos esta configuracion desde firebase
+//En la configuración del proyecto, elegimos la opción CDN 
+// y copiamos el fragmento de código que nos proporciona Firebase, sin las etiquetas <script>.
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    //Esta información corresponde a mi cuenta de firebase
+    //Cada proyecto tiene su propia configuración única
+    //Reemplazá los valores por los de tu propio proyecto de Firebase si estás siguiendo este ejemplo
+    apiKey: "AIzaSyCNDRpdr9jym_rDvwFEp4XMTx74wFHVrWQ",
+    authDomain: "merca-joja.firebaseapp.com",
+    projectId: "merca-joja",
+    storageBucket: "merca-joja.firebasestorage.app",
+    messagingSenderId: "784636335257",
+    appId: "1:784636335257:web:0c7bef4ecdcebbba801408",
+    measurementId: "G-3H54Q7XQY9"
+};
+
+// Inicializamos la app de firebase
+const app = initializeApp(firebaseConfig);
+//Inicializamos la base de datos
+const db = getDatabase(app);
+
+//Seleccionamos los elementos del DOM donde mostraremos los datos
+//y donde agregaremos nuevos datos
+//Primero los  iunput para agregar nuevos estudiantes
+let inputNombre = document.querySelector("#nombre");
+let inputApellido = document.querySelector("#apellido");
+let inputEdad = document.querySelector("#edad");
+let inputDni = document.querySelector("#dni");
+let inputNota = document.querySelector("#nota");
+//y el boton
+let btnAgregar = document.querySelector("#agregar");
+
+
+btnAgregar.onclick = function () {
+    //Creamos una referencia a la ubicación "estudiantes" en la base de datos
+    //Y con el dni como clave unica
+    //Esto asegura que cada estudiante se almacene bajo su dni
+    let estudiantesRef = ref(db, 'estudiantes/' + inputDni.value);
+
+    //Usamos la función "set" para escribir los datos del nuevo estudiante en la base de datos
+    //Le indicamos donde almacenar los datos y qué datos almacenar
+
+
+    set(estudiantesRef, {
+        //Tomamos cada dato desde los inputs del formulario
+        nombre: inputNombre.value,
+        apellido: inputApellido.value,
+        edad: inputEdad.value,
+        nota: inputNota.value
+    })
+
+
+        //Agregamos algunas alertas para indicar que los datos se han agregado correctamente
+        //o si hubo un error al agregar los datos
+        //Usamos la función "then" para manejar el caso exitoso
+        .then(() => {
+            alert("Estudiante agregado correctamente");
+        })
+        //Usamos la función "catch" para manejar errores
+        .catch((error) => {
+            alert("Error al agregar estudiante: " + error.message);
+        }); 
+
+}
