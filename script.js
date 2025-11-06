@@ -26,13 +26,14 @@ let btnAgregar = document.querySelector("#agregar");
 
 
 btnAgregar.onclick = function () {
+    console.log("hola");
     let estudiantesRef = ref(db, 'estudiantes/' + inputDni.value);
 
 
     set(estudiantesRef, {
-        nombre: inputNombre.value,
-        apellido: inputApellido.value,
-        edad: inputEdad.value,
+        producto: inputNombre.value,
+        cantidad: inputApellido.value,
+        precio: inputEdad.value,
     })
 
         .then(() => {
