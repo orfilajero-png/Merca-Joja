@@ -15,24 +15,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-let tabla = document.querySelector(".tabla-estudiantes");
+let parrafo = document.querySelector("p");
 
-const refEstudiantes = ref(db, "estudiantes");
+const refDatos = ref(db, "estudiantes");
 
-onValue(refEstudiantes, (datos) => {
-    console.log(datos)
-    let estudiantes = datos.val();
-    tabla.innerHTML = "";
-    for (let dni in estudiantes) {
-        tabla.innerHTML += `
-        <tr>
-            <td>${dni}</td>
-            <td>${estudiantes[dni].producto}</td>
-            <td>${estudiantes[dni].precio}</td>
-            <td>${estudiantes[dni].cantidad}</td>
-        </tr>
-        `;
-        
-    }
-
+onValue(refDatos, (snapshot) => {
+    console.log(snapshot.val())
+    let estudiantes = snapshot.val()
+    parrafo.textContent = `El producto ${estudiantes[dni].producto} tiene un precio estimado de ${estudiantes[dni].precio}`
+    
 })

@@ -1,174 +1,166 @@
-/* ===== Estilo global inspirado en JojaMart (Stardew Valley) ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', 'Orbitron', 'Tahoma', sans-serif;
-}
-
+/* === ESTILO GENERAL === */
 body {
-    min-height: 100vh;
-    background: radial-gradient(circle at top right, #00aaff 0%, #003366 100%);
-    color: #e0f7ff;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #0b182b;
+    color: #e0e0e0;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 40px;
-    text-shadow: 0 0 4px rgba(0, 200, 255, 0.4);
-}
-
-/* ===== Contenedor general ===== */
-.form, .lista {
-    background: rgba(10, 25, 40, 0.85);
-    border: 2px solid rgba(0, 150, 255, 0.5);
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0, 180, 255, 0.4),
-                inset 0 0 15px rgba(0, 100, 180, 0.3);
-    backdrop-filter: blur(8px);
-    padding: 30px 40px;
+    min-height: 100vh;
+  }
+  
+  /* === NAVBAR === */
+  header.navbar {
+    background: linear-gradient(90deg, #002244, #004488);
     width: 100%;
-    max-width: 450px;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.form:hover, .lista:hover {
-    box-shadow: 0 0 25px rgba(0, 220, 255, 0.6);
-}
-
-.form h1, .lista h1 {
-    color: #66e0ff;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    border-bottom: 2px solid rgba(0, 180, 255, 0.3);
-    padding-bottom: 10px;
-}
-
-/* ===== Inputs estilo corporativo Joja ===== */
-input {
-    display: block;
-    width: 100%;
-    padding: 12px 15px;
-    margin: 12px 0;
-    border: 1px solid rgba(0, 200, 255, 0.4);
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  header.navbar h2 {
+    margin: 0;
+    font-size: 28px;
+    color: #4cd1ff;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px #4cd1ff;
+  }
+  
+  nav {
+    margin-top: 10px;
+  }
+  
+  nav button {
+    background: #033c73;
+    border: none;
+    color: #e0e0e0;
+    padding: 10px 20px;
+    margin: 0 5px;
     border-radius: 6px;
-    background-color: rgba(0, 40, 80, 0.8);
-    color: #e0f7ff;
-    font-size: 1rem;
-    transition: 0.3s;
-}
-
-input::placeholder {
-    color: #88ccee;
-}
-
-input:focus {
-    border-color: #00ccff;
-    background-color: rgba(0, 70, 120, 0.9);
-    box-shadow: 0 0 8px rgba(0, 200, 255, 0.6);
-}
-
-/* ===== Botones JojaCorp ===== */
-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 15px;
+    font-size: 15px;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  
+  nav button:hover {
+    background: #4cd1ff;
+    color: #0b182b;
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px #4cd1ff;
+  }
+  
+  /* === FORMULARIO === */
+  .form {
+    background: #11294d;
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 40px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+    text-align: center;
+  }
+  
+  .form h1 {
+    color: #4cd1ff;
+    margin-bottom: 25px;
+  }
+  
+  .form input {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
     border: none;
     border-radius: 6px;
-    background: linear-gradient(180deg, #00bfff, #0077cc);
-    color: #fff;
-    font-weight: bold;
+    outline: none;
+    background-color: #0b182b;
+    color: #e0e0e0;
+    font-size: 15px;
+  }
+  
+  .form input::placeholder {
+    color: #8ba6c8;
+  }
+  
+  button#agregar {
+    margin-top: 15px;
+    background-color: #4cd1ff;
+    color: #0b182b;
+    border: none;
+    padding: 10px 25px;
+    font-size: 16px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 10px rgba(0, 150, 255, 0.3);
-    transition: all 0.3s ease;
-}
-
-button:hover {
-    background: linear-gradient(180deg, #33ccff, #0099ff);
-    box-shadow: 0 0 12px rgba(0, 220, 255, 0.8);
-    transform: translateY(-2px);
-}
-
-/* ===== Tabla estilo corporativo ===== */
-.lista {
-    max-width: 800px;
+    transition: all 0.3s;
+  }
+  
+  button#agregar:hover {
+    background-color: #66e0ff;
+    box-shadow: 0 0 15px #4cd1ff;
+  }
+  
+  /* === TABLA === */
+  .lista {
+    width: 90%;
+    margin-top: 40px;
     overflow-x: auto;
-}
-
-table {
+  }
+  
+  table {
     width: 100%;
     border-collapse: collapse;
-    color: #cdeeff;
-    text-align: left;
-    font-size: 0.95rem;
-}
-
-thead {
-    background-color: rgba(0, 100, 160, 0.8);
-    color: #aeeaff;
+    background-color: #11294d;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #004488;
+    color: #4cd1ff;
     text-transform: uppercase;
-}
-
-th, td {
-    padding: 12px 15px;
-    border-bottom: 1px solid rgba(0, 180, 255, 0.2);
-}
-
-tr:hover {
-    background-color: rgba(0, 150, 255, 0.1);
-}
-
-/* ===== Detalles decorativos Joja ===== */
-.form::before, .lista::before {
-    content: "";
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    border-radius: 15px;
-    pointer-events: none;
-    background: linear-gradient(45deg, transparent, rgba(0,255,255,0.2), transparent);
-    animation: border-glow 3s linear infinite;
-}
-
-@keyframes border-glow {
-    0% { filter: hue-rotate(0deg); }
-    100% { filter: hue-rotate(360deg); }
-}
-
-/* ===== Responsivo ===== */
-@media (max-width: 600px) {
-    .form, .lista {
-        width: 100%;
-        padding: 20px;
+    letter-spacing: 1px;
+  }
+  
+  td {
+    background-color: #0f2240;
+  }
+  
+  tr:nth-child(even) td {
+    background-color: #0b1a33;
+  }
+  
+  tr:hover td {
+    background-color: #1a3b66;
+    transition: 0.3s;
+  }
+  
+  /* === TEXTO DE DATOS === */
+  p {
+    font-size: 18px;
+    color: #a9c2e8;
+  }
+  
+  /* === RESPONSIVO === */
+  @media (max-width: 600px) {
+    nav button {
+      display: block;
+      margin: 10px auto;
     }
-
-    table, thead, tbody, th, td, tr {
-        display: block;
+  
+    .form {
+      width: 95%;
     }
-
-    th {
-        display: none;
-    }
-
-    td {
-        padding: 10px;
-        text-align: right;
-        position: relative;
-        border-bottom: 1px solid rgba(0, 180, 255, 0.2);
-    }
-
-    td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 10px;
-        color: #00ccff;
-        font-weight: bold;
-    }
-}
+  }
+  

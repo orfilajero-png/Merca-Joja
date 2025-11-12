@@ -1,5 +1,5 @@
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+//const app = initializeApp(firebaseConfig);
+//const analytics = getAnalytics(app);
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
 import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
@@ -8,6 +8,7 @@ import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/12.4.0
 const firebaseConfig = {
     apiKey: "AIzaSyCNDRpdr9jym_rDvwFEp4XMTx74wFHVrWQ",
     authDomain: "merca-joja.firebaseapp.com",
+    databaseURL: "https://merca-joja-default-rtdb.firebaseio.com",
     projectId: "merca-joja",
     storageBucket: "merca-joja.firebasestorage.app",
     messagingSenderId: "784636335257",
